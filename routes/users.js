@@ -16,6 +16,14 @@ router.get("/", function(req, res, next) {
   });
 });
 
+router.get("/:id", function(req, res, next) {
+  User.findById({ _id: req.params.id }, (error, user) => {
+    res.status(200).send({
+      user
+    });
+  });
+});
+
 router.get("/create", function(req, res, next) {
   res.render("create");
 });
@@ -37,7 +45,7 @@ router.post("/create", function(req, res, next) {
 });
 
 router.delete("/delete/:id", function(req, res, next) {
-  User.deleteOne({ _id: req.params.id }, (error, next) => {
+  User.deleteOne( req.params.id , (error, next) => {
     if (error) {
       res.send(400).send({
         error: "Did not delete"
