@@ -45,7 +45,7 @@ router.post("/create", function(req, res, next) {
 });
 
 router.delete("/delete/:id", function(req, res, next) {
-  User.deleteOne( req.params.id , (error, next) => {
+  User.deleteOne(req.params.id, (error, next) => {
     if (error) {
       res.send(400).send({
         error: "Did not delete"
@@ -54,6 +54,33 @@ router.delete("/delete/:id", function(req, res, next) {
       res.status(200).send({
         res: "Deleted"
       });
+    }
+  });
+});
+
+router.post("/login", function(req, res, next) {
+  let reqObj = {};
+  if (req.body.userName) {
+    reqObj.userName = req.body.userName;
+  }
+  if (req.body.email) {
+    reqObj.email = req.body.email;
+  }
+  User.findOne(reqObj, (error, user) => {
+    if (!user) {
+      res.status(401).send({
+        result: "Invalid user"
+      });
+    } else {
+      if (user.password === md5(req.body.password)) {
+        res.status(200).send({
+          result: "Valid user"
+        });
+      } else {
+        res.status(401).send({
+          result: "Invalid user"
+        });
+      }
     }
   });
 });
