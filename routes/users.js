@@ -8,8 +8,15 @@ var md5 = require("md5");
 /* GET users listing. */
 router.get("/", function(req, res, next) {
   var _users = [];
+  let _user = {}
   User.find({}, (error, users) => {
-    _users = users;
+    users.map(user => {
+      _user.name=user.name
+      _user.surName=user.surName
+      _user.email=user.email
+      _user.userName=user.userName
+      _users.push(_user)
+    });
     res.status(200).send({
       users: _users
     });
