@@ -11,11 +11,13 @@ router.get("/", function(req, res, next) {
   let _user = {}
   User.find({}, (error, users) => {
     users.map(user => {
+      _user._id=user._id
       _user.name=user.name
       _user.surName=user.surName
       _user.email=user.email
       _user.userName=user.userName
       _users.push(_user)
+      _user={}
     });
     res.status(200).send({
       users: _users
@@ -29,10 +31,6 @@ router.get("/:id", function(req, res, next) {
       user
     });
   });
-});
-
-router.get("/create", function(req, res, next) {
-  res.render("create");
 });
 
 router.post("/create", function(req, res, next) {
