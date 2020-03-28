@@ -13,7 +13,7 @@ router.get("/", function(req, res, next) {
     users.map(user => {
       _user._id=user._id
       _user.name=user.name
-      _user.surName=user.surName
+      _user.surname=user.surname
       _user.email=user.email
       _user.userName=user.userName
       _users.push(_user)
@@ -36,7 +36,7 @@ router.get("/:id", function(req, res, next) {
 router.post("/create", function(req, res, next) {
   var _user = {
     name: req.body.name,
-    surName: req.body.surName,
+    surname: req.body.surname,
     email: req.body.email,
     password: md5(req.body.password),
     userName: req.body.userName
