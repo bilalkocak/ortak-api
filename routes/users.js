@@ -50,14 +50,15 @@ router.post("/create", function(req, res, next) {
 });
 
 router.delete("/delete/:id", function(req, res, next) {
-  User.deleteOne(req.params.id, (error, next) => {
+  User.deleteOne({_id:req.params.id}, (error, next) => {
     if (error) {
-      res.send(400).send({
+      res.status(400).send({ 
         error: "Did not delete"
       });
     } else {
       res.status(200).send({
-        res: "Deleted"
+        res: "Deleted",
+        _id:req.params.id
       });
     }
   });
