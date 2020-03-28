@@ -43,6 +43,7 @@ router.post("/create", function(req, res, next) {
   };
 
   new User(_user).save((error, comment) => {
+    delete _user.password
     res.status(200).send({
       user: _user
     });
