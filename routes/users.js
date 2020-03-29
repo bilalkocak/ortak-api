@@ -64,18 +64,24 @@ router.delete("/delete/:id", function(req, res, next) {
 router.put('/update', function(req, res, next) {
   const {userId, name, surname, email, userName} = req.body
 
-  User.findOneAndUpdate({_id: userId}, {name, surname, email, userName}, {new: true},(error, next)=>{
-    if (error) {
-      res.status(400).send({
-        error: 'Did not update'
+  if (name&&surname&&email&&userName) {
+    User.findOneAndUpdate({_id: userId}, {name, surname, email, userName}, {new: true},(error, next)=>{
+      if (error) {
+        res.status(400).send({
+          error: 'Did not update'
+        })
+      } else {
+        res.status(200).send({
+          error: 'User updated',
+          user: next
+        })
+      }
+    })
+  } else {
+    res.status(400).send({
+        error: 'Fields can not be null'
       })
-    } else {
-      res.status(200).send({
-        error: 'User updated',
-        user: next
-      })
-    }
-  })
+  }
 })
 
 router.put('/join' , function(req,res,nex){
