@@ -3,6 +3,8 @@ var router = express.Router();
 
 var mongoose = require("mongoose");
 var User = mongoose.model("User");
+var Group = mongoose.model("Group");
+
 var md5 = require("md5");
 
 /* GET users listing. */
@@ -64,6 +66,30 @@ router.delete("/delete/:id", function(req, res, next) {
     }
   });
 });
+
+router.put('/join' , function(req,res,nex){
+  const {userId,groupId} = req.body
+
+  User.findOneAndUpdate({_id: userId},{$push: {groups: groupId}}, (error,next)=>{
+    if (error) {
+      res.status(400).send({
+        error: 'Did not update'
+      })
+    } else {
+      Group.findOneAndUpdate({_id: groupId}, {$push: {users: userId}}, (error,next)=>{
+        if (error) {
+          res.status(400).send({
+            error: 'Did not update'
+          })
+        } else {
+          res.status(200).send({
+            res: "Joined user to group"
+          })
+        }
+      })
+    }
+  })
+})
 
 router.post("/login", function(req, res, next) {
   let reqObj = {};
