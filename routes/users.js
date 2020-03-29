@@ -10,16 +10,10 @@ var md5 = require("md5");
 /* GET users listing. */
 router.get("/", function(req, res, next) {
   var _users = [];
-  let _user = {}
   User.find({}, (error, users) => {
     users.map(user => {
-      _user._id=user._id
-      _user.name=user.name
-      _user.surname=user.surname
-      _user.email=user.email
-      _user.userName=user.userName
-      _users.push(_user)
-      _user={}
+      delete user.password
+      _users.push(user)
     });
     res.status(200).send({
       users: _users
