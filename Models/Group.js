@@ -4,7 +4,12 @@ var Schema = mongoose.Schema;
 
 var groupSchema = new Schema({
     name: String,
-    users: [Schema.Types.ObjectId],
+    users: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+      }
+    ],
 });
 
 mongoose.model('Group', groupSchema);

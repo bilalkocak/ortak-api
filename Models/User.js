@@ -8,7 +8,12 @@ var userSchema = new Schema({
     email: String,
     password: String,
     userName: String,
-    groups: [Schema.Types.ObjectId]
+    groups: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Group"
+      }
+    ]
 });
 
 mongoose.model('User', userSchema);
