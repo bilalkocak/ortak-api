@@ -14,7 +14,8 @@ var paymentSchema = new Schema({
     group: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Group"
-    }
+    },
+    date: Date
 });
 
 mongoose.model('Payment', paymentSchema);
