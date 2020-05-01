@@ -3,8 +3,10 @@ var router = express.Router();
 
 var mongoose = require("mongoose");
 var Group = mongoose.model("Group");
+var Payment = mongoose.model("Payment");
+var User = mongoose.model("User");
 
-/* GET users listing. */
+/* GET groups listing. */
 router.get("/", function(req, res, next) {
   Group.find({}, (error, groups) => {
     res.status(200).send({
@@ -23,13 +25,13 @@ router.get("/:id", function(req, res, next) {
 
 router.post("/create", function(req, res, next) {
   var _group = {
-    name: req.body.name,
+    name: req.body.name
   };
 
-  new Group(_group).save((error, comment) => {
-    res.status(200).send({
-      group: _group
-    });
+  new Group(_group).save((error, group) => {
+    res.status(200).send(
+      group
+    );
   });
 });
 
