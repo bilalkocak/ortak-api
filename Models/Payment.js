@@ -2,22 +2,21 @@ var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
 
-var groupSchema = new Schema({
+var paymentSchema = new Schema({
     name: String,
-    users: [
-      {
+    user:{
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
-      }
-    ],
-    payments: [
-      {
+    },
+    description: String,
+    charge: Number,
+    status: Boolean,
+    group: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Payment"
-      }
-    ],
+        ref: "Group"
+    }
 });
 
-mongoose.model('Group', groupSchema);
+mongoose.model('Payment', paymentSchema);
 
 module.exports = mongoose;

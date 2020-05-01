@@ -7,3 +7,4 @@ mongoose.connect(`mongodb://${process.env.DB_HOST}/${process.env.DB_NAME}`,{useN
 
 require('./Models/User');
 require('./Models/Group');
+require('./Models/Payment');
