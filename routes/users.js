@@ -23,9 +23,9 @@ router.get("/", function(req, res, next) {
 
 router.get("/:id", function(req, res, next) {
   User.findById({ _id: req.params.id }, (error, user) => {
-    res.status(200).send({
+    res.status(200).send(
       user
-    });
+    );
   });
 });
 
