@@ -124,7 +124,8 @@ router.post("/login", function(req, res, next) {
     } else {
       if (user.password === md5(req.body.password)) {
         res.status(200).send({
-          result: "Valid user"
+          result: "Valid user",
+          _id:user._id
         });
       } else {
         res.status(401).send({
