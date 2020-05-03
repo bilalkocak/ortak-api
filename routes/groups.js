@@ -17,9 +17,9 @@ router.get("/", function(req, res, next) {
 
 router.get("/:id", function(req, res, next) {
   Group.findById({ _id: req.params.id }, (error, group) => {
-    res.status(200).send({
+    res.status(200).send(
       group
-    });
+    );
   });
 });
 
