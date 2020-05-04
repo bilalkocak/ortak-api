@@ -136,4 +136,50 @@ router.post("/login", function(req, res, next) {
   });
 });
 
+router.put('/update', function(req, res, next) {
+  const {userId, name, surname, email, userName} = req.body
+
+  if (name&&surname&&email&&userName) {
+    User.findOneAndUpdate({_id: userId}, {name, surname, email, userName}, {new: true},(error, next)=>{
+      if (error) {
+        res.status(400).send({
+          error: 'Did not update'
+        })
+      } else {
+        res.status(200).send({
+          error: 'User updated',
+          user: next
+        })
+      }
+    })
+  } else {
+    res.status(400).send({
+        error: 'Fields can not be null'
+      })
+  }
+})
+
+router.put('/leave' , function(req,res,next){
+  const {userId,groupId} = req.body
+  User.findOneAndUpdate({ _id:  userId}, { $pullAll: { groups: [groupId] } }, (error,next)=>{
+    if (error) {
+      res.status(400).send({
+        error: 'Did not leave'
+      })
+    } else {
+      Group.findOneAndUpdate({ _id:  groupId}, { $pullAll: { users: [userId] } }, (error,next)=>{
+        if (error) {
+          res.status(400).send({
+            error: 'Did not update'
+          })
+        } else {
+          res.status(200).send({
+            res: "User leaved from group"
+          })
+        }
+      })
+    }
+  })
+})
+
 module.exports = router;
