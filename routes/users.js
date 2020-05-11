@@ -159,6 +159,24 @@ router.put('/update', function(req, res, next) {
   }
 })
 
+router.put('/update/avatar', function(req, res, next) {
+  const {userId, avatarId} = req.body
+
+   User.findOneAndUpdate({_id: userId}, {avatarId}, {new: true},(error, next)=>{
+    if (error) {
+      res.status(400).send({
+        error: 'Did not update'
+      })
+    } else {
+       res.status(200).send({
+        error: 'Avatar updated',
+        user: next
+      })
+    }
+  })
+})
+
+
 router.put('/leave' , function(req,res,next){
   const {userId,groupId} = req.body
   User.findOneAndUpdate({ _id:  userId}, { $pullAll: { groups: [groupId] } }, (error,next)=>{
