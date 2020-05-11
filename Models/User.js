@@ -8,7 +8,10 @@ var userSchema = new Schema({
     email: String,
     password: String,
     userName: String,
-    avatarId: String,
+    avatarId: {
+      type:String,
+      default: "1"
+    },
     groups: [
       {
         type: mongoose.Schema.Types.ObjectId,
