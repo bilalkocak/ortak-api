@@ -43,4 +43,20 @@ router.get("/:id", function(req, res, next) {
     });
 });
 
+router.delete("/delete/:id", function(req, res, next) {
+  Payment.deleteOne({_id:req.params.id}, (error, next) => {
+    if (error) {
+      res.status(400).send({ 
+        error: "Did not delete"
+      });
+    } else {
+      res.status(200).send({
+        res: "Deleted",
+        _id:req.params.id
+      });
+    }
+  });
+});
+
+
 module.exports = router;
