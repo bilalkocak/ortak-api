@@ -58,5 +58,28 @@ router.delete("/delete/:id", function(req, res, next) {
   });
 });
 
+router.put('/update/status', function(req, res, next) {
+  const {paymentId, status} = req.body
+
+  if (paymentId&&status) {
+    Payment.findOneAndUpdate({_id: paymentId}, {status}, {new: true},(error, next)=>{
+      if (error) {
+        res.status(400).send({
+          error: 'Did not update'
+        })
+      } else {
+        res.status(200).send({
+          error: 'User updated',
+          payment: next
+        })
+      }
+    })
+  } else {
+    res.status(400).send({
+        error: 'Fields can not be null'
+      })
+  }
+})
+
 
 module.exports = router;
