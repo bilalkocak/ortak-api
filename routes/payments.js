@@ -28,18 +28,53 @@ router.post("/create", function(req, res, next) {
 });
 
 router.get("/", function(req, res, next) {
+  var newPayments=[]
+
     Payment.find({}, (error, payments) => {
-      res.status(200).send(
-          payments
-      );
+      payments.map((payment,index)=>{
+        User.findById(payment.user,(error,_user)=>{
+          console.log(newPayments)
+          newPayments.push(
+            {
+              _id: payment._id,
+              name: payment.name,
+              user: _user,
+              description: payment.description,
+              charge: payment.charge,
+              status: payment.status,
+              group: payment.group,
+              date: payment.date,
+              __v: 0
+            }
+          )
+          if(index+1===payments.length){
+            res.status(200).send(
+              newPayments
+            );
+          }
+        })
+        
+      })
     });
 });
   
 router.get("/:id", function(req, res, next) {
     Payment.findById({ _id: req.params.id }, (error, payment) => {
-      res.status(200).send(
-        payment
-      );
+      User.findById(payment.user,(error,_user)=>{
+        res.status(200).send(
+          {
+            _id: payment._id,
+            name: payment.name,
+            user: _user,
+            description: payment.description,
+            charge: payment.charge,
+            status: payment.status,
+            group: payment.group,
+            date: payment.date,
+            __v: 0
+          }
+        );
+      })
     });
 });
 
