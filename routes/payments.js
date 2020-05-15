@@ -69,7 +69,7 @@ router.put('/update/status', function(req, res, next) {
         })
       } else {
         res.status(200).send({
-          error: 'User updated',
+          result: 'User updated',
           payment: next
         })
       }
