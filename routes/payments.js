@@ -107,16 +107,30 @@ router.get("/:id", function(req, res, next) {
 });
 
 router.delete("/delete/:id", function(req, res, next) {
-  Payment.deleteOne({_id:req.params.id}, (error, next) => {
+  const groupId = req.params.group
+  const paymentId = req.params.id
+  Payment.findOneAndDelete({_id:req.params.id}, (error, next) => {
     if (error) {
       res.status(400).send({ 
         error: "Did not delete"
       });
     } else {
-      res.status(200).send({
-        res: "Deleted",
-        _id:req.params.id
-      });
+      Group.findOneAndUpdate({ _id:  next.group}, { $pullAll: { payments: [paymentId] } },(_error,payment)=>{
+        console.log(groupId,paymentId)
+        console.log(1907)
+        if (_error) {
+          res.status(400).send({ 
+            error: "Did not delete"
+          });
+        } else {
+          console.log(next,req.params.id)
+          console.log(1907)
+          res.status(200).send({
+            res: "Deleted",
+            _id:req.params.id
+          });
+        }
+      })
     }
   });
 });
