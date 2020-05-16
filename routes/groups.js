@@ -9,9 +9,15 @@ var User = mongoose.model("User");
 /* GET groups listing. */
 router.get("/", function(req, res, next) {
   Group.find({}, (error, groups) => {
-    res.status(200).send({
-      groups
-    });
+    if (error) {
+      res.status(400).send({
+        error
+      });
+    } else {
+      res.status(200).send({
+        groups
+      });
+    }
   });
 });
 
@@ -35,9 +41,15 @@ router.post("/create", function(req, res, next) {
   };
 
   new Group(_group).save((error, group) => {
-    res.status(200).send(
-      group
-    );
+    if (error) {
+      res.status(400).send(
+        error
+      );
+    } else {
+      res.status(200).send(
+        group
+      );
+    }
   });
 });
 

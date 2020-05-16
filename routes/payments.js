@@ -11,9 +11,12 @@ router.post("/create", function(req, res, next) {
 
   new Payment(req.body).save((error, payment) => {
     if (error) {
+      res.status(400).send({
+        error
+      })
     } else {
-      Group.findOneAndUpdate({_id: req.body.group}, {$push: {payments: payment._id}}, (error,group)=>{
-        if (error) {
+      Group.findOneAndUpdate({_id: req.body.group}, {$push: {payments: payment._id}}, (_error,group)=>{
+        if (_error) {
           res.status(400).send({
             error: 'Did not update'
           })
@@ -31,50 +34,75 @@ router.get("/", function(req, res, next) {
   var newPayments=[]
 
     Payment.find({}, (error, payments) => {
-      payments.map((payment,index)=>{
-        User.findById(payment.user,(error,_user)=>{
-          console.log(newPayments)
-          newPayments.push(
-            {
-              _id: payment._id,
-              name: payment.name,
-              user: _user,
-              description: payment.description,
-              charge: payment.charge,
-              status: payment.status,
-              group: payment.group,
-              date: payment.date,
-              __v: 0
+      if (error) {
+        res.status(400).send(
+          error
+        );
+      } else {
+        payments.map((payment,index)=>{
+          User.findById(payment.user,(_error,_user)=>{
+
+            if (_error) {
+              res.status(400).send(
+                _error
+              );
+            } else {
+              newPayments.push(
+                {
+                  _id: payment._id,
+                  name: payment.name,
+                  user: _user,
+                  description: payment.description,
+                  charge: payment.charge,
+                  status: payment.status,
+                  group: payment.group,
+                  date: payment.date,
+                  __v: 0
+                }
+              )
+              if(index+1===payments.length){
+                res.status(200).send(
+                  newPayments
+                );
+              }
             }
-          )
-          if(index+1===payments.length){
-            res.status(200).send(
-              newPayments
-            );
-          }
+          })
+          
         })
-        
-      })
+      }
+      
     });
 });
   
 router.get("/:id", function(req, res, next) {
     Payment.findById({ _id: req.params.id }, (error, payment) => {
-      User.findById(payment.user,(error,_user)=>{
-        res.status(200).send(
-          {
-            _id: payment._id,
-            name: payment.name,
-            user: _user,
-            description: payment.description,
-            charge: payment.charge,
-            status: payment.status,
-            group: payment.group,
-            date: payment.date,
-            __v: 0
-          }
+      if (error) {
+        res.status(400).send(
+          error
         );
-      })
+      } else {
+        User.findById(payment.user,(_error,_user)=>{
+          if (_error) {
+            res.status(400).send(
+              _error
+            );
+          } else {
+            res.status(200).send(
+              {
+                _id: payment._id,
+                name: payment.name,
+                user: _user,
+                description: payment.description,
+                charge: payment.charge,
+                status: payment.status,
+                group: payment.group,
+                date: payment.date,
+                __v: 0
+              }
+            );
+          }
+        })
+      }  
     });
 });
 

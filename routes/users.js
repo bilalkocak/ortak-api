@@ -11,21 +11,33 @@ var md5 = require("md5");
 router.get("/", function(req, res, next) {
   var _users = [];
   User.find({}, (error, users) => {
-    users.map(user => {
-      delete user.password
-      _users.push(user)
-    });
-    res.status(200).send({
-      users: _users
-    });
+    if (error) {
+      res.status(400).send({
+        error
+      });
+    } else {
+      users.map(user => {
+        delete user.password
+        _users.push(user)
+      });
+      res.status(200).send({
+        users: _users
+      });
+    }
   });
 });
 
 router.get("/:id", function(req, res, next) {
   User.findById({ _id: req.params.id }, (error, user) => {
-    res.status(200).send(
-      user
-    );
+    if (error) {
+      res.status(400).send(
+        error
+      );
+    } else {
+      res.status(200).send(
+        user
+      );
+    }
   });
 });
 
@@ -39,10 +51,16 @@ router.post("/create", function(req, res, next) {
   };
 
   new User(_user).save((error, comment) => {
-    delete _user.password
+    if (error) {
+      res.status(200).send({
+        error
+      });
+    } else {
+      delete _user.password
     res.status(200).send({
       user: _user
     });
+    }
   });
 });
 
