@@ -1,5 +1,14 @@
-# Ortak 
+# Ortak App Web Service
 
+Ortak App, aynı alanı paylaşan ve ortak harcamaları olan kişilerin giderlerini takip etmesine fayda sağlayan bir mobil uygulama.
+
+
+## Kurulum
+ 1. Repoyu indirin
+ 2. `npm install`
+ 3. `node ./bin/www`
+ 
+# Dokümantasyon
 
 ## USERS
 
