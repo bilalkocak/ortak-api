@@ -30,22 +30,22 @@ Gelecek ornek veri:
 
   
 
-    {    
-	"users": [	    
-		{	    
-			"groups": [			    
-				"5e7f3d600a34b40575879b14"			    
-			],	    
-			"_id": "5e7f41c1ca515805bcdaf7e0",	    
-			"name": "Bilal",	    
-			"email": "daradaradar@gmail.com",	    
-			"password": "b3dadc98be9055b708436c86a0e9d6da",	    
-			"userName": "Uluborlu Vampiri",	    
-			"__v": 0,	    
-			"surname": "Kocak"
-		}	    
-	]    
-    }
+	{    
+		"users": [	    
+			{	    
+				"groups": [			    
+					"5e7f3d600a34b40575879b14"			    
+				],	    
+				"_id": "5e7f41c1ca515805bcdaf7e0",	    
+				"name": "Bilal",	    
+				"email": "daradaradar@gmail.com",	    
+				"password": "b3dadc98be9055b708436c86a0e9d6da",	    
+				"userName": "Uluborlu Vampiri",	    
+				"__v": 0,	    
+				"surname": "Kocak"
+			}	    
+		]    
+	}
 
   
 
@@ -114,7 +114,7 @@ Gelecek ornek veri:
     {
     
     	"groups": [  
-	    	"5e7f3d600a34b40575879b14"  
+	    		"5e7f3d600a34b40575879b14"  
     	],   
     	"_id": "5e7f41c1ca515805bcdaf7e0",    
     	"name": "Bilal",    
@@ -361,21 +361,21 @@ Gelecek ornek veri:
 
   
 
-    {
-    	"groups": [
-    		{
-	    		"users": [
-	    			"5e7f43b987f87805f283c15c"
-	    		],
-		    	"payments": [
-		    		“5eac348298c292098e406fe6"
-		    	],
-		    	"_id": "5e7f3d600a34b40575879b14",
-		    	"name": "deneme2",
-		    	"__v": 0
-	    	}
-    	]
-    }
+	{
+		"groups": [
+			{
+				"users": [
+					"5e7f43b987f87805f283c15c"
+				],
+				"payments": [
+					“5eac348298c292098e406fe6"
+				],
+				"_id": "5e7f3d600a34b40575879b14",
+				"name": "deneme2",
+				"__v": 0
+			}
+		]
+	}
 
   
 
@@ -564,28 +564,28 @@ Gelecek ornek veri:
 
 
     [    
-	    {	    
-	    	"_id": "5eb00610db2ac71ab1277cd5",	    
-	    	"name": "Elektrik faturasi2",    
-	    	"user": {    
-	    		"avatarId": "1",	    
-	    		"groups": [	    
-	    			"5eb010ef56fd6f00177d1f82"	    
-	    		],	    
-	    		"_id": "5eafe4f5c052a20017eda076",	    
-	    		"name": "omom",	    
-	    		"surname": "omer",	    
-	    		"email": "omom@omom.com",	    
-	    		"password": "defac44447b57f152d14f30cea7a73cb",	    
-	    		"userName": "omom",	    
-	    		"__v": 0	    
-	    	},	    
-	    	"description": "baba odedi2",    
-	    	"charge": 213.5,    
-	    	"status": true,   
-	    	"group": "5eafe56ec052a20017eda077",    
-	    	"date": "2012-12-11T22:00:00.000Z",	    
-	    	"__v": 0    
+		{	    
+			"_id": "5eb00610db2ac71ab1277cd5",	    
+			"name": "Elektrik faturasi2",    
+			"user": {    
+				"avatarId": "1",	    
+				"groups": [	    
+					"5eb010ef56fd6f00177d1f82"	    
+				],	    
+				"_id": "5eafe4f5c052a20017eda076",	    
+				"name": "omom",	    
+				"surname": "omer",	    
+				"email": "omom@omom.com",	    
+				"password": "defac44447b57f152d14f30cea7a73cb",	    
+				"userName": "omom",	    
+				"__v": 0	    
+			},	    
+			"description": "baba odedi2",    
+			"charge": 213.5,    
+			"status": true,   
+			"group": "5eafe56ec052a20017eda077",    
+			"date": "2012-12-11T22:00:00.000Z",	    
+			"__v": 0    
     	}   
     ]
 
@@ -625,13 +625,13 @@ Gelecek ornek veri:
 	    	"password": "defac44447b57f152d14f30cea7a73cb",
 	    	"userName": "omom",
 	    	"__v": 0
-	},
-	"description": "baba odedi2",   
-	"charge": 213.5,    
-	"status": true,    
-	"group": "5eafe56ec052a20017eda077",    
-	"date": "2012-12-11T22:00:00.000Z",    
-	"__v": 0    
+		},
+		"description": "baba odedi2",   
+		"charge": 213.5,    
+		"status": true,    
+		"group": "5eafe56ec052a20017eda077",    
+		"date": "2012-12-11T22:00:00.000Z",    
+		"__v": 0    
     }
 
 
