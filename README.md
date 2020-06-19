@@ -22,10 +22,6 @@ Ortak App, aynı alanı paylaşan ve ortak harcamaları olan kişilerin giderler
 
   
 
-Beklenen veri:
-
-    {}
-
 Gelecek ornek veri:
 
   
@@ -58,11 +54,6 @@ Gelecek ornek veri:
 
   
 
-Beklenen veri:
-
-  
-
-    {}
 
   
 
@@ -131,10 +122,6 @@ Gelecek ornek veri:
   
 -   Id si verilen useri siler
     
-  
-Beklenen veri:
-  
-    {}
   
 Gelecek ornek veri:
   
@@ -348,13 +335,6 @@ Gelecek ornek veri:
     
 
   
-
-Beklenen veri:
-
-  
-
-    {}
-
   
 
 Gelecek ornek veri:
@@ -383,9 +363,6 @@ Gelecek ornek veri:
   
 -   Id'si verilen tek bir group'u getirir.
     
-Beklenen veri:  
-
-    {}
   
 Gelecek ornek veri:
 
@@ -441,11 +418,6 @@ Gelecek örnek veri:
 
   
 
-Beklenen veri:
-
-  
-
-    {}
 
   
 
@@ -554,11 +526,7 @@ Gelecek ornek veri:
 ### GET /payments
 -   Butun paymentleri getirir.
  
-Beklenen veri:
 
-  
-
-    {}
 
 Gelecek ornek veri:
 
@@ -597,13 +565,6 @@ Gelecek ornek veri:
     
 
   
-
-Beklenen veri:
-
-  
-
-    {}
-
   
 
 Gelecek ornek veri:
